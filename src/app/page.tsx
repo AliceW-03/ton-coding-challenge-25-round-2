@@ -1,12 +1,12 @@
 "use client"
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
-import { postEvent, retrieveRawInitData, User } from '@telegram-apps/sdk';
+import { postEvent, User, retrieveRawInitData } from '@telegram-apps/sdk-react';
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const initData = retrieveRawInitData();
   const [user, setUser] = useState<User | null>(null)
   async function validate() {
+    const initData = retrieveRawInitData();
     try {
       const res = await fetch('/api/validate', {
         method: 'POST',
